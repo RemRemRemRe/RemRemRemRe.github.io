@@ -1,0 +1,77 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://remremremre.github.io/</id>
+  <title>RemRemRemRe</title>
+  <subtitle>Sharing something useful to the world :)</subtitle>
+  <updated>2023-06-10T03:01:19+08:00</updated>
+  <author>
+    <name>RemRemRemRe</name>
+    <uri>https://remremremre.github.io/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://remremremre.github.io/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="https://remremremre.github.io/"/>
+  <generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator>
+  <rights> © 2023 RemRemRemRe </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>一种把多个虚幻工程解决方案合而为一的方法</title>
+    <link href="https://remremremre.github.io/posts/A-way-to-combine-multiple-unreal-projects-into-one/" rel="alternate" type="text/html" title="一种把多个虚幻工程解决方案合而为一的方法" />
+    <published>2022-06-05T11:15:13+08:00</published>
+  
+    <updated>2023-05-20T14:33:20+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/A-way-to-combine-multiple-unreal-projects-into-one/</id>
+    <content src="https://remremremre.github.io/posts/A-way-to-combine-multiple-unreal-projects-into-one/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      使用引擎目录的GenerateProjectFiles.bat和.uprojectdirs文件
+
+
+  首先参考Default.uprojectdirs文件中的注释
+  新建my.uprojectdirs或直接修改Default.uprojectdirs文件,并写入例如Project/
+  此时运行GenerateProjectFiles.bat生成解决方案时,会额外从引擎目录/Project目录下的1级子目录寻找虚幻工程目录, 例如UnrealEngine/Project/LyraGame
+  完成
+
+
+
+  因为.uprojectdirs文件中只支持指定子目录,若想要外部目录的工程也被包含进解决方案文件,可以使用系统提供的symbol-link功能
+
+
+
+  已废弃方法
+  
+## 初衷
+
+因为工作,学习的原因,我本地会有多个虚幻工程,并且它们**共用了同一个引擎**
+
+它们的工...
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+

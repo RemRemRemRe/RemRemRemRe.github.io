@@ -1,0 +1,62 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://remremremre.github.io/</id>
+  <title>RemRemRemRe</title>
+  <subtitle>Sharing something useful to the world :)</subtitle>
+  <updated>2023-06-10T03:01:17+08:00</updated>
+  <author>
+    <name>RemRemRemRe</name>
+    <uri>https://remremremre.github.io/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://remremremre.github.io/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="https://remremremre.github.io/"/>
+  <generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator>
+  <rights> © 2023 RemRemRemRe </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>A way to combine multiple unreal projects into one</title>
+    <link href="https://remremremre.github.io/posts/A-way-to-combine-multiple-unreal-projects-into-one/" rel="alternate" type="text/html" title="A way to combine multiple unreal projects into one" />
+    <published>2022-06-05T11:15:13+08:00</published>
+  
+    <updated>2023-05-20T14:33:20+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/A-way-to-combine-multiple-unreal-projects-into-one/</id>
+    <content src="https://remremremre.github.io/posts/A-way-to-combine-multiple-unreal-projects-into-one/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Use the GenerateProjectFiles.bat and .uprojectdirs files of the engine directory
+
+
+  First refer to the comments in the Default.uprojectdirs file
+  Create a new my.uprojectdirs or directly modify the Default.uprojectdirs file and write to e.g. Project/
+  When you run GenerateProjectFiles.bat build a solution, you will additionally look for Unreal Project directories from the Level 1 subdirector...
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+

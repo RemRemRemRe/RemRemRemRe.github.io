@@ -1,0 +1,72 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://remremremre.github.io/</id>
+  <title>RemRemRemRe</title>
+  <subtitle>Sharing something useful to the world :)</subtitle>
+  <updated>2022-06-06T23:32:39+08:00</updated>
+  <author>
+    <name>RemRemRemRe</name>
+    <uri>https://remremremre.github.io/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://remremremre.github.io/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="https://remremremre.github.io/"/>
+  <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
+  <rights> © 2022 RemRemRemRe </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>一种把多个虚幻工程解决方案合而为一的方法</title>
+    <link href="https://remremremre.github.io/posts/A-way-to-combine-multiple-unreal-projects-into-one/" rel="alternate" type="text/html" title="一种把多个虚幻工程解决方案合而为一的方法" />
+    <published>2022-06-05T11:15:13+08:00</published>
+  
+    <updated>2022-06-05T11:15:13+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/A-way-to-combine-multiple-unreal-projects-into-one/</id>
+    <content src="https://remremremre.github.io/posts/A-way-to-combine-multiple-unreal-projects-into-one/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      初衷
+
+因为工作,学习的原因,我本地会有多个虚幻工程,并且它们共用了同一个引擎
+
+它们的工程文件默认都是由UBT(Unreal Build Tool)生成的,独立的解决方案文件
+
+这给我带来的一些问题:
+    - 由于打开解决方案的成本较高,同时打开多个解决方案时的等待时间,内存占用可能都是成倍增加的
+    - 在IDE抽风,或者引擎代码更新而触发符号重新解析的时候,等待时间少则15分钟起步,那叫一个折磨
+
+我认为不同解决方案中,物理路径相同的工程,应该视为同一个工程,虚幻引擎的工程不应该在每个解决方案都重新解析一遍
+
+但目前用过的Rider和Visual Studio(宇宙第一IDE)都是会在每个解决方案中重新解析一遍.非常折磨,其中原由,令人费解,希望能有大佬告知一下
+
+需求
+所以我就在想,既然这些个IDE这么”愚笨”,靠不住,那我能否找到一个方法,手动把多个解决方案合成一个...
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+

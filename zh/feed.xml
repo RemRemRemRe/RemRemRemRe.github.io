@@ -1,0 +1,153 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://remremremre.github.io/</id>
+  <title>RemRemRemRe</title>
+  <subtitle>Sharing something useful to the world :)</subtitle>
+  <updated>2026-02-15T01:22:02+08:00</updated>
+  <author>
+    <name>RemRemRemRe</name>
+    <uri>https://remremremre.github.io/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://remremremre.github.io/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="https://remremremre.github.io/"/>
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <rights> © 2026 RemRemRemRe </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>使用虚幻引擎中在不相关的骨架间共享动画</title>
+    <link href="https://remremremre.github.io/posts/Sharing-Animation-on-Unrelated-Skeleton-in-UnrealEngine/" rel="alternate" type="text/html" title="使用虚幻引擎中在不相关的骨架间共享动画" />
+    <published>2026-02-14T17:17:17+08:00</published>
+  
+    <updated>2026-02-15T01:17:28+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/Sharing-Animation-on-Unrelated-Skeleton-in-UnrealEngine/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/Sharing-Animation-on-Unrelated-Skeleton-in-UnrealEngine/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Animation" />
+    
+  
+
+  <summary>目标效果  本文主要介绍一种实现下图动画效果的方法：    与正常的，通过动画重定向正确缩放并共享动画相反，本方法可以用于得到与模型无关的，完全一致的骨骼数据。即不论用什么模型，播放动画得到的骨骼数据是一样的。  前置知识  首先让我们快速回顾下，虚幻引擎动画系统的基础的动画资产 ：  骨架，骨骼模型，动画序列是虚幻引擎中播放动画所必须的基础资产  理想情况下，每种资产各司其职（单一职责），  骨架提供骨骼层级数据， 与动画序列一起得到每帧的姿势数据 骨骼模型提供蒙皮信息， 用于后续将姿势数据转换到顶点数据，最终渲染出来在动的模型  下面我们逐项了解一下本文关注的数据项  骨架  /**  *	USkeleton : that links between mesh and animation  *		- Bone hierarchy for animations  *		- Bone...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>我对5.6中 Unreal Animation Framework 的理解</title>
+    <link href="https://remremremre.github.io/posts/My-understanding-of-Unreal-Animation-Framework-in-5.6/" rel="alternate" type="text/html" title="我对5.6中 Unreal Animation Framework 的理解" />
+    <published>2025-08-05T01:50:00+08:00</published>
+  
+    <updated>2025-08-05T01:50:00+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/My-understanding-of-Unreal-Animation-Framework-in-5.6/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/My-understanding-of-Unreal-Animation-Framework-in-5.6/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Animation" />
+    
+  
+
+  <summary>约两个月前，Unreal Fest中的巫师4技术演示为我们展示了虚幻引擎下一代动画系统（Unreal Animation Framwork，下文简称UAF。同时把原来的动画蓝图系统简称为ABP），也引起了我强烈的好奇心，感觉是时候好好了解下这个系统了  本文会从程序框架的角度分析此系统 主要介绍系统的构成，各个类型的含义，它们之间的逻辑关系，希望能帮助大家理解和入手这个新动画系统 但不会涉及如动画混合的计算，或是动画重定向等细节  简单运行演示  先看一个简单的运行示例：    视频中是一个简单的分层混合效果，上半身来自拉弓动画的静帧，下半身使用循环的冲刺动画，  BlendMask使用了一个HierarchyTable:       它是一个通用的层级数据容器，这里用作BlendProfile   从左视图可以看到，两个模型完全重合，动画效果完全一致：    因为它们两个运行了相同...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>如何正确获蒙太奇的蒙太奇实例</title>
+    <link href="https://remremremre.github.io/posts/Get-Montage-Instance/" rel="alternate" type="text/html" title="如何正确获蒙太奇的蒙太奇实例" />
+    <published>2025-08-05T01:00:00+08:00</published>
+  
+    <updated>2025-08-05T01:00:00+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/Get-Montage-Instance/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/Get-Montage-Instance/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Animation" />
+    
+  
+
+  <summary>蒙太奇简介  蒙太奇  指的是 UAnimMontage 对象  蒙太奇实例  指的是 FAnimMontageInstance 对象  获取蒙太奇实例  GetInstanceForMontage 查找第一个匹配的蒙太奇实例  从 UAnimInstance::MontageInstances 中查找  GetActiveInstanceForMontage 查找激活的蒙太奇实例  从 UAnimInstance::ActiveMontagesMap 中查找  简易流程图    可以看到，在播放一次蒙太奇时，  在播放之后，新生成的蒙太奇实例就可以通过上述任意接口获取到,  在触发停止/开始混出之后，蒙太奇实例，不再被认为是激活的（Active），  在播放完成/蒙太奇实际停止之后，无法通过任何方式获取到。  但在短时间，多次播放同一个蒙太奇时，事情开始变得复杂了一点，  假设，播...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Latent Timer 延时定时器</title>
+    <link href="https://remremremre.github.io/posts/Latent-Timer/" rel="alternate" type="text/html" title="Latent Timer 延时定时器" />
+    <published>2024-10-05T22:35:09+08:00</published>
+  
+    <updated>2024-10-06T01:06:02+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/Latent-Timer/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/Latent-Timer/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Plugins" />
+    
+  
+
+  <summary>Latent timer  既然已经有了 TimerManager，为什么还要造轮子  因为， 在用TimerManager做玩法的时候，会有不少问题:          SetTimerForNextTick 实际上是当帧触发，而不是下帧           回调顺序与定时器的设置顺序不保证一致           设置定时器时，不能指定 tick group           TimerManager::Tick 是硬编码在当帧稍晚的时刻           只支持以秒/时间单位设置延迟，你想不想用帧数来设置延迟?           不支持循环次数           尽管已经对 FTimerUnifiedDelegate 做了内存大小的优化，但FTimerDta 还是很臃肿      那我们能解决所有提到的问题么?  嗐，全解决有点难，但解决90%的问题就是小菜一碟，因为我...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Re:从零开始的RemGameplayCamera</title>
+    <link href="https://remremremre.github.io/posts/RemGameplayCamera-from-zero/" rel="alternate" type="text/html" title="Re:从零开始的RemGameplayCamera" />
+    <published>2024-10-05T20:55:20+08:00</published>
+  
+    <updated>2025-03-19T01:37:29+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/RemGameplayCamera-from-zero/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/RemGameplayCamera-from-zero/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Plugins" />
+    
+  
+
+  <summary>前言  本文是 RemGameplayCamera 插件的简单明了的入门教程  它将涵盖使用该插件所需的基础知识。  希望你会喜欢  (我会持续改进本文，欢迎任何反馈或者贡献)  介绍  RemGameplayCamera 插件是为虚幻引擎打造的一个数据驱动的玩法相机系统。它提供了基于状态（Tag）的，模块化的，具有优先级的相机数据配置，使用数据资产，支持实时编辑  基于引擎已有的相机框架之上搭建，让它完全兼容原生的相机序列，相机抖动，观看对象切换以及其他相机效果  他是基于AActor的，所以任意的AActor子类对象都可以接入，（当前 UAbilitySystemComponent 是必需的）  因为有内置的相机位置，旋转平滑及其他许多机制，只需要调整相机配置，就可以轻易的实现像 ALS 或者 Lyra 中那样的相机效果，不需要写一行代码  它内置了很多相关的基础功能，比如自由视...</summary>
+
+  </entry>
+
+</feed>
+
+

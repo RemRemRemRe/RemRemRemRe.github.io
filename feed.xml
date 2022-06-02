@@ -1,0 +1,153 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://remremremre.github.io/</id>
+  <title>RemRemRemRe</title>
+  <subtitle>Sharing something useful to the world :)</subtitle>
+  <updated>2026-02-15T01:22:00+08:00</updated>
+  <author>
+    <name>RemRemRemRe</name>
+    <uri>https://remremremre.github.io/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://remremremre.github.io/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="https://remremremre.github.io/"/>
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <rights> © 2026 RemRemRemRe </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Sharing Animation on Unrelated Skeleton in UnrealEngine</title>
+    <link href="https://remremremre.github.io/posts/Sharing-Animation-on-Unrelated-Skeleton-in-UnrealEngine/" rel="alternate" type="text/html" title="Sharing Animation on Unrelated Skeleton in UnrealEngine" />
+    <published>2026-02-14T17:17:17+08:00</published>
+  
+    <updated>2026-02-14T17:17:17+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/Sharing-Animation-on-Unrelated-Skeleton-in-UnrealEngine/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/Sharing-Animation-on-Unrelated-Skeleton-in-UnrealEngine/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Animation" />
+    
+  
+
+  <summary>Target Effect  This article primarily introduces a method to achieve the animation effect shown below:    Unlike the standard approach of properly scaling and sharing animations through animation retargeting, this method allows you to obtain skeleton data that is entirely independent of the model. In other words, regardless of the model used, the skeleton data generated when playing the animati...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>My Understanding of the Unreal Animation Framework in 5.6</title>
+    <link href="https://remremremre.github.io/posts/My-understanding-of-Unreal-Animation-Framework-in-5.6/" rel="alternate" type="text/html" title="My Understanding of the Unreal Animation Framework in 5.6" />
+    <published>2025-08-05T01:50:00+08:00</published>
+  
+    <updated>2025-08-05T01:50:00+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/My-understanding-of-Unreal-Animation-Framework-in-5.6/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/My-understanding-of-Unreal-Animation-Framework-in-5.6/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Animation" />
+    
+  
+
+  <summary>About two months ago, the technical demonstration of The Witcher 4 at Unreal Fest showcased the next-generation animation system of the Unreal Engine (Unreal Animation Framework, hereafter referred to as UAF, while the previous animation blueprint system will be referred to as ABP). This sparked my strong curiosity, and I felt it was time to dive into understanding this system.  This article wi...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>How to get MontageInstance correctly</title>
+    <link href="https://remremremre.github.io/posts/Get-Montage-Instance/" rel="alternate" type="text/html" title="How to get MontageInstance correctly" />
+    <published>2025-08-05T01:00:00+08:00</published>
+  
+    <updated>2025-08-05T01:00:00+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/Get-Montage-Instance/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/Get-Montage-Instance/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Animation" />
+    
+  
+
+  <summary>Terms  Montage  refers to UAnimMontage Object  MontageInstance  refers to FAnimMontageInstance Object  Get the MontageInstance  GetInstanceForMontage - Find first matching MontageInstance  Finding from UAnimInstance::MontageInstances  GetActiveInstanceForMontage - Find the active MontageInstance  Finding from UAnimInstance::ActiveMontagesMap  Simple Logic Flow    You can see that after playing ...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Latent Timer</title>
+    <link href="https://remremremre.github.io/posts/Latent-Timer/" rel="alternate" type="text/html" title="Latent Timer" />
+    <published>2024-10-05T13:14:52+08:00</published>
+  
+    <updated>2024-10-06T01:06:02+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/Latent-Timer/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/Latent-Timer/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Plugins" />
+    
+  
+
+  <summary>Latent timer  Why “reinventing the wheel” while we have TimerManager  Well, TimerManager has many problems when it comes to gameplay:          SetTimerForNextTick actually called this tick rather than the next tick           Callback order is not guaranteed to be the same as the timer set order           Can’t specify tick group when setting timer           TimerManager::Tick itself is hardcode...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Re:RemGameplayCamera from zero</title>
+    <link href="https://remremremre.github.io/posts/RemGameplayCamera-from-zero/" rel="alternate" type="text/html" title="Re:RemGameplayCamera from zero" />
+    <published>2024-02-25T00:21:20+08:00</published>
+  
+    <updated>2025-03-19T01:37:29+08:00</updated>
+  
+    <id>https://remremremre.github.io/posts/RemGameplayCamera-from-zero/</id>
+    <content type="text/html" src="https://remremremre.github.io/posts/RemGameplayCamera-from-zero/" />
+    <author>
+      <name>RemRemRemRe</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+    <category term="Plugins" />
+    
+  
+
+  <summary>Preface  This page is a simple and clear tutorial for RemGameplayCamera plugin  It would cover the very basics you need to use the plugin  Hope you will like it  (I will continue to improve this page, and any feedback or contribution is welcomed)  Introduction  RemGameplayCamera plugin is a data-driven gameplay camera system for unreal engine projects. It provides a state based(tag based), modu...</summary>
+
+  </entry>
+
+</feed>
+
+

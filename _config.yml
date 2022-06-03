@@ -227,5 +227,6 @@ jekyll-archives:
 
 languages: ["en", "zh_CN"]
 default_lang: "en"
-exclude_from_localization: []
-parallel_localization: true
+exclude_from_localization: ["javascript", "images", "css", "public"]
+parallel_localization: false
+    

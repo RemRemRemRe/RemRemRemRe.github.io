@@ -1,3 +1,6 @@
+permissions:
+  contents: write
+
 name: md2zhihu
 on: [push]
 jobs:
@@ -11,5 +14,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         pattern: >
-            _posts/*.md
-            _posts/*.markdown
+            _posts/zh_CN/*.md

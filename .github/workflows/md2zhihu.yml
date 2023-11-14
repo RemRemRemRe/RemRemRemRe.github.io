@@ -14,4 +14,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         pattern: >
-            _posts/zh_CN/*.md
+            _posts/zh/*.md

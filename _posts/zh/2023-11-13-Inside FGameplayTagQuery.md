@@ -3,7 +3,7 @@ title: 简析FGameplayTagQuery
 date: 2023-11-13 01:13:14 +0800
 categories: [Unreal Engine]
 tags: [gameplay]    # TAG names should always be lowercase
-lang: zh_CN
+lang: zh
 ---
 
 ## 什么是`FGameplayTagQuery`

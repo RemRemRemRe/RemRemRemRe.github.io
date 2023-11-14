@@ -3,7 +3,7 @@ title: 一种把多个虚幻工程解决方案合而为一的方法
 date: 2022-06-05 11:15:13 +0800
 categories: [Unreal Engine]
 tags: [tooling]     # TAG names should always be lowercase
-lang: zh_CN
+lang: zh
 ---
 
 ## 使用引擎目录的`GenerateProjectFiles.bat`和`.uprojectdirs`文件

@@ -143,4 +143,14 @@ After typing the console command `Rem.Camera.DrawDebug.Shape 1`, a blue sphere w
 
 ♥
 
-(For now, for more information, please look at the tooltips of properties on `URemCameraSettings` and `FRemCameraSettingTagValue`)
+### How the camera location get calculated
+
+![HowToGetCameraLocation](HowToGetCameraLocation.png)
+
+This👆 image contains terms that is crucial to understand the system, you can refer to it if feeling confused.
+
+Every piece of the data that is needed by the camera pipeline could be extended.
+
+These are also many built-in functionalities for you, feel free to explorer it!
+
+(for more information, please look at the tooltips of properties on `URemCameraSettings` and `FRemCameraSettingTagValue`)

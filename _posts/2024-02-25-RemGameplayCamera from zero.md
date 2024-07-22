@@ -4,7 +4,7 @@ date: 2024-02-25 00:21:20 +0800
 categories: [Unreal Engine, Plugins]
 tags: [gameplay, remgameplaycamera, tutorial, documentation]    # TAG names should always be lowercase
 lang: en
-img_path: /assets/img/RemGameplayCamera/
+media_subpath: /assets/img/RemGameplayCamera/
 ---
 
 ## Preface

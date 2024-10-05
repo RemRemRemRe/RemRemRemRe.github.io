@@ -12,7 +12,7 @@ lang: zh
 
 因为， 在用`TimerManager`做玩法的时候，会有不少问题:
 
-- `SetTimerForNextTick` 实际上是当帧触发，而不是下帧 [see this commit](https://github.com/EpicGames/UnrealEngine/commit/6e2c11d3544ea67564e259703b074c6e24e530fa)
+- `SetTimerForNextTick` 实际上是当帧触发，[而不是下帧](https://github.com/EpicGames/UnrealEngine/commit/6e2c11d3544ea67564e259703b074c6e24e530fa)
 
 - 回调顺序与定时器的设置顺序不保证一致
 

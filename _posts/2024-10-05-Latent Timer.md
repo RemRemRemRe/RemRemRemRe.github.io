@@ -12,7 +12,7 @@ lang: en
 
 Well, `TimerManager` has many problems when it comes to gameplay:
 
-- `SetTimerForNextTick` actually called this tick rather than the next tick [see this commit](https://github.com/EpicGames/UnrealEngine/commit/6e2c11d3544ea67564e259703b074c6e24e530fa)
+- `SetTimerForNextTick` actually called this tick [rather than the next tick](https://github.com/EpicGames/UnrealEngine/commit/6e2c11d3544ea67564e259703b074c6e24e530fa)
 
 - Callback order is not guaranteed to be the same as the timer set order
 

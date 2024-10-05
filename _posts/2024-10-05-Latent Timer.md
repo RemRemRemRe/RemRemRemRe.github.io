@@ -1,6 +1,6 @@
 ---
 title: Latent Timer
-date: 2024-10-05 00:13:14 +0800
+date: 2024-10-05 13:14:52 +0800
 categories: [Unreal Engine, Plugins]
 tags: [gameplay, remcommon, tutorial, documentation]    # TAG names should always be lowercase
 lang: en
@@ -43,7 +43,7 @@ Every `LatentAction` is bound to a `UObject`, it ticks in the `tick group` of th
 
 - `Latent Action` is processed in the order they get bound to the `UObject`
 
-- The tick group of a `Latent Action` could be controlled by specifying a ticking object within the target tick group. And it support tick dependency with no efforts!
+- The tick group of a `Latent Action` could be controlled by specifying a ticking object within the target tick group. And it support specifying tick dependency with no efforts!
 
 - Support delay in frames! Which doesn't likely to exist in `TimerManager`. Two helper struct: `FTimerParameterHelper_Time`, `FTimerParameterHelper_Frame`, one API: `Rem::Latent::SetTimer`
 
@@ -53,7 +53,7 @@ Every `LatentAction` is bound to a `UObject`, it ticks in the `tick group` of th
 
 - My `FTimerLatentAction_Delay` only has size of 40 bytes to get all the jobs done, while `FTimerDta` has the size of 128, 3.2x bigger!
 
-- A `fire and forget` alternative for pausing timer for one frame pause: `Rem::Latent::SetTimerPauseOnce`
+- A `fire and forget` alternative for pausing timer for one frame pause: `Rem::Latent::SetTimerPausedOneFrame`
 
 - Familiar APIs: `Rem::Latent::PauseTimer`, `Rem::Latent::UnpauseTimer`, `Rem::Latent::SetTimerPaused`(did we met before?), `Rem::Latent::StopTimer`, `Rem::Latent::FindTimerAction`
 
@@ -65,15 +65,15 @@ Every `LatentAction` is bound to a `UObject`, it ticks in the `tick group` of th
 
 ### Limitations
 
-- Rem::Latent::FTimerHandle is 32-bit, because `FLatentActionManager::AddNewAction` only accepts `int32`, while it was `uint64` in `TimerManager`
+- `Rem::Latent::FTimerHandle` is 32-bit, because `FLatentActionManager::AddNewAction` only accepts `int32`, while it was `uint64` in `TimerManager`
 
-- Infinite loop map happen if if `Rem::Latent::SetTimerForThisTick` called within `FLatentActionManager::ProcessLatentActions`, use `Rem::Latent::SetTimerForNextTick` instead
+- Infinite loop map happen if `Rem::Latent::SetTimerForThisTick` is called on the same object within `FLatentActionManager::ProcessLatentActions`, use `Rem::Latent::SetTimerForNextTick` instead in the case
 
-- `Rem::Latent::SetTimerForThisTick` may not called at this tick, if the bound object is already ticked, use `TimerManager` instead, or using my wrapper `Rem::Object::SetTimerForThisTick`
+- `Rem::Latent::SetTimerForThisTick` will not get called in the relevant `tick group`, if the bound object is already ticked this frame, consider `Rem::Latent::SetTimerForNextTick` instead in the case
 
-- `TimeToDelay`, `LoopCount`, `InitialDelay` are all 4 bytes for simplicity, might consider extended to those 27 bits in the future
+- `TimeToDelay`, `LoopCount`, `InitialDelay` are all 4 bytes only for simplicity, might consider extended to those 27 spared bits in the future
 
-- Requires bound object to Tick to "set tick group" for our timer latent action
+- Requires tick enabled on the bound object to "set tick group" for our timer latent action
 
 ### Sample code
 

@@ -103,7 +103,7 @@ this will make the `tag query` always matching, letting the camera setting asset
 then, copy these value and paste into `Setting Values` property:
 
 ```
-((SettingTag=(TagName="CameraSettingValue.CameraTransform.Location.Offset"),Value=/Script/RemGameplayCamera.RemCameraDataLocationOffset_Fixed(Offset=(X=-280.000000,Y=0.000000,Z=0.000000))),(SettingTag=(TagName="CameraSettingValue.Fov.Value"),Value=/Script/RemGameplayCamera.RemCameraDataFov_Fixed(Fov=90.000000)),(SettingTag=(TagName="CameraSettingValue.PivotTransform.Value"),Value=/Script/RemGameplayCamera.RemCameraDataTransform_MeshTransform(SocketName="spine_05",Offset=(X=0.000000,Y=0.000000,Z=0.000000))),(SettingTag=(TagName="CameraSettingValue.Trace"),Value=/Script/RemGameplayCamera.RemCameraDataTrace_Collision(TraceRadius=12.000000,TraceDistanceRatioInterpolationSpeed=10.000000,TraceStartLocationAlpha=(Blend=None),TraceStartTransform=None)),(SettingTag=(TagName="CameraSettingValue.CameraTransform.Location.Blend"),Value=/Script/RemGameplayCamera.RemCameraDataBlendAlpha_Blend(Blend=/Script/RemGameplayCamera.RemCameraAlphaBlend(Blend=/Script/RemGameplayCamera.RemAlphaBlendOption(BlendTime=1.000000)))))
+((Comment="CameraSettingValue.CameraTransform.Location.Offset",SettingTag=(TagName="CameraSettingValue.CameraTransform.Location.Offset"),Value=/Script/RemGameplayCamera.RemCameraDataLocationOffset_Fixed(Offset=(X=280.000000,Y=0.000000,Z=0.000000))),(Comment="CameraSettingValue.Fov.Value",SettingTag=(TagName="CameraSettingValue.Fov.Value"),Value=/Script/RemGameplayCamera.RemCameraDataFov_Fixed(Fov=90.000000)),(Comment="CameraSettingValue.PivotTransform.Value",SettingTag=(TagName="CameraSettingValue.PivotTransform.Value"),Value=/Script/RemGameplayCamera.RemCameraDataTransform_MeshTransform(SocketName="spine_05",Offset=(X=0.000000,Y=0.000000,Z=0.000000))),(Comment="CameraSettingValue.Trace",SettingTag=(TagName="CameraSettingValue.Trace"),Value=/Script/RemGameplayCamera.RemCameraDataTrace_Collision(TraceRadius=15.000000,TraceDistanceRatioInterpolationSpeed=10.000000,TraceStartLocationAlpha=(Curve=(),BlendTime=1.000000),TraceStartTransform=None)),(Comment="CameraSettingValue.CameraTransform.Location.Blend",SettingTag=(TagName="CameraSettingValue.CameraTransform.Location.Blend"),Value=/Script/RemGameplayCamera.RemCameraDataBlendAlpha_Blend(Blend=/Script/RemGameplayCamera.RemCameraAlphaBlend(Blend=(Curve=(),BlendTime=1.000000)))))
 ```
 
 these values tries to mimic the spring arm settings on `BP_ThirdPersonCharacter`.
@@ -117,7 +117,8 @@ For the `View Target Tag Query` property, we would use the same value up there�
 > Normally, this should match specific view target `identifier` which is also represented as `gameplay tag`
 {: .prompt-tip }
 
-then add the `DA_Camera_Setting` to it's `SettingAssets` property.
+then add `an` element in `SettingAssetsForStatesData`, add the `DA_Camera_Setting` to it's `SettingAssets` property
+(`bUseSettingAssetsGroups`is a relatively advanced feature that’s added recently，we’ll ignore it here，let it be `unchecked`，so we could use the simpler one as opposed to it. See detailed explanation bellow if interested)
 
 
 #### create `DA_Camera_ViewTargets`
@@ -147,6 +148,8 @@ thanks for your time
 
 ♥
 
+## Want to know more ?
+
 ### How the camera location get calculated
 
 ![HowToGetCameraLocation](HowToGetCameraLocation.png)
@@ -159,3 +162,41 @@ There are also many built-in functionalities for you, feel free to explorer it!
 
 > For more information, please look at the tooltips of properties on `URemCameraSettings` and `FRemCameraSettingTagValue`
 {: .prompt-tip }
+
+### `SettingAssetsForStatesData` a subdivision of configuration for a kind of view target
+
+Prior to the `3.2` release, there was `one and only one` set of camera configurations in the configuration of a view target
+
+When view target has different camera configurations in different states, it is necessary to include `all camera configurations`, which is difficult to maintain and use
+
+It is now possible to configure the `set of camera configurations` separately for `each combination state`. When the combination state changes, the configuration is automatically switched, thus solving the above two problems
+
+For example, instead of having all the camera configurations for all the movement modes in one array, you can configure a set of configurations for each movement mode.
+
+> Of course, no one is stopping you from doing that, but apparently the later is better in the long run
+{: .prompt-tip }
+
+### Get `bUseSettingAssetsGroups` checked to use the configuration grouping feature
+
+In version `3.2`, I added the `SettingAssetsGroups` property to `SettingAssetsForStatesData` to support `reusing` camera configurations in `different states` for the view target
+
+Using the `URemCameraSettingAssetGroup` type, the `camera configurations` are freely combined to get the desired `set of Camera Configurations`
+
+Each `Configuration Group` can choose to add a `subgroup of camera configurations` to the `front` or `back` of the `current set of camera configuration`, or any specific `camera configuration asset`
+
+![AssetGroup](AssetGroup.png)
+
+### Modify the engine to support camera data type filtering
+
+Need to contact me to get access to the `source code repository`, because it is `required` to modify the code of both the engine and plugin
+
+follow the steps：
+
+1. apply the `patch` from the root directory of the repository to the engine
+2. edit the `REM_ENABLE_CAMERA_DATA_DROP_DOWN_FILTER` macro in the plugin code to `true`
+
+to get automatically data type filtering according to the selected `camera setting tag`
+
+![DataTypeFilter](DataTypeFilter.png)
+
+as you can see, only the data related to `transform` is listed

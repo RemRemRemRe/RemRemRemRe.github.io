@@ -102,7 +102,7 @@ media_subpath: /assets/img/RemGameplayCamera/
 然后，复制下面的数据，粘贴到`Setting Values` 属性:
 
 ```
-((SettingTag=(TagName="CameraSettingValue.CameraTransform.Location.Offset"),Value=/Script/RemGameplayCamera.RemCameraDataLocationOffset_Fixed(Offset=(X=-280.000000,Y=0.000000,Z=0.000000))),(SettingTag=(TagName="CameraSettingValue.Fov.Value"),Value=/Script/RemGameplayCamera.RemCameraDataFov_Fixed(Fov=90.000000)),(SettingTag=(TagName="CameraSettingValue.PivotTransform.Value"),Value=/Script/RemGameplayCamera.RemCameraDataTransform_MeshTransform(SocketName="spine_05",Offset=(X=0.000000,Y=0.000000,Z=0.000000))),(SettingTag=(TagName="CameraSettingValue.Trace"),Value=/Script/RemGameplayCamera.RemCameraDataTrace_Collision(TraceRadius=12.000000,TraceDistanceRatioInterpolationSpeed=10.000000,TraceStartLocationAlpha=(Blend=None),TraceStartTransform=None)),(SettingTag=(TagName="CameraSettingValue.CameraTransform.Location.Blend"),Value=/Script/RemGameplayCamera.RemCameraDataBlendAlpha_Blend(Blend=/Script/RemGameplayCamera.RemCameraAlphaBlend(Blend=/Script/RemGameplayCamera.RemAlphaBlendOption(BlendTime=1.000000)))))
+((Comment="CameraSettingValue.CameraTransform.Location.Offset",SettingTag=(TagName="CameraSettingValue.CameraTransform.Location.Offset"),Value=/Script/RemGameplayCamera.RemCameraDataLocationOffset_Fixed(Offset=(X=280.000000,Y=0.000000,Z=0.000000))),(Comment="CameraSettingValue.Fov.Value",SettingTag=(TagName="CameraSettingValue.Fov.Value"),Value=/Script/RemGameplayCamera.RemCameraDataFov_Fixed(Fov=90.000000)),(Comment="CameraSettingValue.PivotTransform.Value",SettingTag=(TagName="CameraSettingValue.PivotTransform.Value"),Value=/Script/RemGameplayCamera.RemCameraDataTransform_MeshTransform(SocketName="spine_05",Offset=(X=0.000000,Y=0.000000,Z=0.000000))),(Comment="CameraSettingValue.Trace",SettingTag=(TagName="CameraSettingValue.Trace"),Value=/Script/RemGameplayCamera.RemCameraDataTrace_Collision(TraceRadius=15.000000,TraceDistanceRatioInterpolationSpeed=10.000000,TraceStartLocationAlpha=(Curve=(),BlendTime=1.000000),TraceStartTransform=None)),(Comment="CameraSettingValue.CameraTransform.Location.Blend",SettingTag=(TagName="CameraSettingValue.CameraTransform.Location.Blend"),Value=/Script/RemGameplayCamera.RemCameraDataBlendAlpha_Blend(Blend=/Script/RemGameplayCamera.RemCameraAlphaBlend(Blend=(Curve=(),BlendTime=1.000000)))))
 ```
 
 这些数据尝试模拟`BP_ThirdPersonCharacter`的相机臂的配置
@@ -116,7 +116,8 @@ media_subpath: /assets/img/RemGameplayCamera/
 > 通常，这里应该匹配特定观看对象的`识别码`，它也是用`标签`表示的
 {: .prompt-tip }
 
-然后添加 `DA_Camera_Setting` 到它的 `SettingAssets` 属性
+然后在`SettingAssetsForStatesData`中添加`一个`元素，并把 `DA_Camera_Setting` 添加到它的 `SettingAssets` 属性
+（`bUseSettingAssetsGroups`是新增的较高级功能，这里我们先忽略，让它保持`未勾选`状态，以使用与之相对的简单功能，后文会有对其的详细使用说明）
 
 
 #### 创建 `DA_Camera_ViewTargets`
@@ -146,6 +147,8 @@ media_subpath: /assets/img/RemGameplayCamera/
 
 ♥
 
+## 继续深入？
+
 ### 相机位置是如何计算的
 
 ![HowToGetCameraLocation](HowToGetCameraLocation.png)
@@ -158,3 +161,42 @@ media_subpath: /assets/img/RemGameplayCamera/
 
 > 想知道更多信息，请查看 `URemCameraSettings` 和 `FRemCameraSettingTagValue` 的浮动提示
 {: .prompt-tip }
+
+### `SettingAssetsForStatesData` 同一观看对象的细分状态配置
+
+在`3.2`版本之前，一种观看对象的配置资产中`有且仅有`一组相机配置
+
+当观看对象在不同状态下都有不同的相机配置时，需要把`所有相机配置`都列入其中，难以维护和使用
+
+
+现在可以分别为`每种组合状态`配置`一组相机配置`。组合态变化时，会自动切换配置，从而解决了上面两个问题
+
+比如：为不同的移动模式分别配置一组配置，而不是把所有移动模式的相机配置都配在一个数组里。
+
+> 当然没人阻止你这么做，但显然前者从长远来看会更好
+{: .prompt-tip }
+
+### 勾选 `bUseSettingAssetsGroups` 以使用配置分组功能
+
+在`3.2`版本，我在`SettingAssetsForStatesData`中添加了`SettingAssetsGroups`属性，以支持相机配置在观看对象的`不同状态`下`复用`
+
+使用`URemCameraSettingAssetGroup`类型，将`相机配置`自由组合，得到想要的`一组相机配置`
+
+每个`配置分组`可以选择将一个`配置子分组`加在`当前这组相机配置`的`最前面`或者`最后面`，或者指定`相机配置`的`前面`或者`后面`
+
+![AssetGroup](AssetGroup.png)
+
+### 修改引擎，以支持配置类型的过滤
+
+需要联系我获取`源码仓库`的访问权限，因为`必需`修改引擎和插件的代码
+
+操作步骤：
+
+1. 将仓库的根目录中的`patch`应用到引擎
+2. 编辑插件代码中的`REM_ENABLE_CAMERA_DATA_DROP_DOWN_FILTER`宏为`true`
+
+即可获得自动根据选中的`相机配置Tag`过滤指定相机数据类型的数据：
+
+![DataTypeFilter](DataTypeFilter.png)
+
+可以看到上图中，只列出了`变换`相关的数据

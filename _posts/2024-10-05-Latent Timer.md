@@ -73,7 +73,7 @@ Every `LatentAction` is bound to a `UObject`, it ticks in the `tick group` of th
 
 - `TimeToDelay`, `LoopCount`, `InitialDelay` are all 4 bytes only for simplicity, might consider extended to those 27 spared bits in the future
 
-- Requires tick enabled on the bound object to "set tick group" for our timer latent action
+- Requires `tick enabled` on the bound object and it has to be a `blueprint class object` to be able to "set tick group" for our timer latent action
 
 ### Sample code
 
